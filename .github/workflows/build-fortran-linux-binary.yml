@@ -25,12 +25,13 @@ jobs:
       - name: Install build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y gfortran
+          sudo apt-get install -y gfortran meson ninja-build
           python -m pip install --upgrade pip
           python -m pip install numpy meson ninja
 
       - name: Build Fortran extension
         run: |
+          export PATH="$(python -c 'import sysconfig; print(sysconfig.get_path("scripts"))'):$PATH"
           rm -f frontend/api/ablation*.so
           python -m numpy.f2py -c -m ablation \
             backend/fortran_src/constants.f90 \
