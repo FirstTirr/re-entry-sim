@@ -1,0 +1,145 @@
+nohup: ignoring input
+ * Serving Flask app 'Space Debris Re-entry Ablation Simulator'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8000
+ * Running on http://192.168.41.79:8000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 596-019-437
+127.0.0.1 - - [13/Apr/2026 14:07:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:09:32] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:09:32] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:09:52] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:09:52] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:09:54] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:30:26] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:30:26] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:30:32] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:30:32] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:30:47] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:30:47] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:30:59] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:30:59] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:32:34] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:32:34] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:33:03] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:33:03] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:33:11] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:33:11] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:33:14] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:33:47] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:33:47] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:36:37] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:36:37] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:47:05] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:47:05] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:47:17] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:47:17] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:47:21] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:47:24] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:47:24] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:49:02] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:49:02] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:49:32] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:49:32] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:49:57] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:49:57] "POST /simulate HTTP/1.1" 200 -
+ * Detected change in '/home/tirr/project/re-entry/backend/ablation.cpython-314-x86_64-linux-gnu.so', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 596-019-437
+ * Detected change in '/home/tirr/project/re-entry/backend/ablation.cpython-314-x86_64-linux-gnu.so', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 596-019-437
+127.0.0.1 - - [13/Apr/2026 14:57:44] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:57:44] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:57:51] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 14:57:51] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:09:22] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:09:22] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:09:26] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:13:25] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:13:25] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:13:32] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:13:32] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:13:55] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:13:55] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:14:05] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:14:05] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:17:05] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:17:05] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:17:32] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:17:32] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:17:38] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:17:38] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:19:07] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:19:07] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:19:21] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:19:21] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:19:24] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:19:28] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:19:29] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:22:23] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:22:23] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:22:30] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:22:30] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:22:56] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:22:56] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:24:22] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:24:22] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:24:37] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:24:37] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:25:38] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:25:38] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:26:11] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:26:11] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:26:27] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:26:27] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:31:00] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:31:00] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:31:04] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:31:17] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:31:17] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:31:52] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:31:52] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:34:57] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:34:57] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:37:22] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:37:22] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:37:52] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:37:52] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:38:46] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:38:46] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:38:59] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:38:59] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:39:59] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:39:59] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:40:03] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:40:06] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:40:06] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:40:09] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:40:13] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:40:13] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:40:21] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:40:21] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:40:28] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 15:40:28] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 16:06:28] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 16:06:28] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 16:06:32] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 16:06:36] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 16:06:36] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 16:06:38] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 16:06:40] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 16:06:40] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 16:06:43] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 16:06:43] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 16:06:47] "POST /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 16:06:51] "OPTIONS /simulate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Apr/2026 16:06:51] "POST /simulate HTTP/1.1" 200 -
+/usr/lib/python3.14/multiprocessing/resource_tracker.py:396: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-_whqmynb'}
+  warnings.warn(
