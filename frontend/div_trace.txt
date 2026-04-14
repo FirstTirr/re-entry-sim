@@ -1,0 +1,386 @@
+2: 
+3: <div class="dashboard">
+  + ['<div class="dashboard">']
+4: <header class="header">
+  + ['<header class="header">']
+5: <div class="logo">🚀</div>
+  + ['<div class="logo">']
+  - ['</div>']
+6: <div class="title-container">
+  + ['<div class="title-container">']
+7: <h1>Space Debris Re-entry Simulator</h1>
+  + ['<h1>']
+8: <p>Ablation & Trajectory Analysis Dashboard</p>
+  + ['<p>']
+  - ['</p>']
+9: </div>
+  - ['</div>']
+10: </header>
+  - ['</header>']
+11: 
+12: <div class="main-layout">
+  + ['<div class="main-layout">']
+13: <aside class="sidebar">
+  + ['<aside class="sidebar">']
+14: <div class="panel">
+  + ['<div class="panel">']
+15: <h2><i class="icon-settings"></i> Parameter Awal</h2>
+  + ['<h2>', '<i class="icon-settings">']
+  - ['</i>']
+16: <div class="input-grid">
+  + ['<div class="input-grid">']
+17: <div class="form-group">
+  + ['<div class="form-group">']
+18: <label>Material / Alloy</label>
+  + ['<label>']
+  - ['</label>']
+19: <select v-model="materialType" @change="updateMaterial">
+  + ['<select v-model="materialType" @change="updateMaterial">']
+20: <option value="alu">Aluminium 6061</option>
+  + ['<option value="alu">']
+  - ['</option>']
+21: <option value="ti">Titanium Alloy</option>
+  + ['<option value="ti">']
+  - ['</option>']
+22: <option value="carbon">Carbon-Carbon Shield</option>
+  + ['<option value="carbon">']
+  - ['</option>']
+23: </select>
+  - ['</select>']
+24: </div>
+  - ['</div>']
+25: <div class="form-group">
+  + ['<div class="form-group">']
+26: <label>Massa (kg)</label>
+  + ['<label>']
+  - ['</label>']
+27: <input type="number" v-model.number="params.mass" />
+28: </div>
+  - ['</div>']
+29: <div class="form-group">
+  + ['<div class="form-group">']
+30: <label>Kec. Awal (m/s)</label>
+  + ['<label>']
+  - ['</label>']
+31: <input type="number" v-model.number="params.velocity" />
+32: </div>
+  - ['</div>']
+33: <div class="form-group">
+  + ['<div class="form-group">']
+34: <label>Ketinggian (m)</label>
+  + ['<label>']
+  - ['</label>']
+35: <input type="number" v-model.number="params.altitude" />
+36: </div>
+  - ['</div>']
+37: <div class="form-group">
+  + ['<div class="form-group">']
+38: <label>Sudut (rad)</label>
+  + ['<label>']
+  - ['</label>']
+39: <input type="number" step="0.01" v-model.number="params.gamma" />
+40: </div>
+  - ['</div>']
+41: <div class="form-group">
+  + ['<div class="form-group">']
+42: <label>Luas (m²)</label>
+  + ['<label>']
+  - ['</label>']
+43: <input type="number" step="0.1" v-model.number="params.area" />
+44: </div>
+  - ['</div>']
+45: <div class="form-group">
+  + ['<div class="form-group">']
+46: <label>Drag Coeff</label>
+  + ['<label>']
+  - ['</label>']
+47: <input type="number" step="0.1" v-model.number="params.drag_coeff" />
+48: </div>
+  - ['</div>']
+49: <div class="form-group">
+  + ['<div class="form-group">']
+50: <label>Step Waktu (s)</label>
+  + ['<label>']
+  - ['</label>']
+51: <input type="number" step="0.1" v-model.number="params.dt" />
+52: </div>
+  - ['</div>']
+53: <div class="form-group">
+  + ['<div class="form-group">']
+54: <label>Shape Factor</label>
+  + ['<label>']
+  - ['</label>']
+55: <input type="number" step="0.1" v-model.number="params.shape_factor" />
+56: </div>
+  - ['</div>']
+57: <div class="form-group">
+  + ['<div class="form-group">']
+58: <label>Latitude Awal</label>
+  + ['<label>']
+  - ['</label>']
+59: <input type="number" step="0.1" v-model.number="params.initial_lat" />
+60: </div>
+  - ['</div>']
+61: <div class="form-group">
+  + ['<div class="form-group">']
+62: <label>Longitude Awal</label>
+  + ['<label>']
+  - ['</label>']
+63: <input type="number" step="0.1" v-model.number="params.initial_lon" />
+64: </div>
+  - ['</div>']
+65: <div class="form-group">
+  + ['<div class="form-group">']
+66: <label>Maks Waktu (s)</label>
+  + ['<label>']
+  - ['</label>']
+67: <input type="number" step="10" v-model.number="params.t_max" />
+68: </div>
+  - ['</div>']
+69: </div>
+  - ['</div>']
+70: <div class="toggle-group">
+  + ['<div class="toggle-group">']
+71: <label class="toggle-label">
+  + ['<label class="toggle-label">']
+72: <input type="checkbox" v-model="liveTelemetryEnabled" />
+73: Aktifkan Live Telemetry
+74: </label>
+  - ['</label>']
+75: </div>
+  - ['</div>']
+76: <button @click="runSimulation" :disabled="loading" class="btn-primary">
+  + ['<button @click="runSimulation" :disabled="loading" class="btn-primary">']
+77: <span v-if="loading" class="spinner"></span>
+  + ['<span v-if="loading" class="spinner">']
+  - ['</span>']
+78: {{ loading ? 'Menghitung...' : (isPlaying ? 'Ulangi Simulasi' : 'Mulai Simulasi') }}
+79: </button>
+  - ['</button>']
+80: <div v-if="error" class="error-msg">{{ error }}</div>
+  + ['<div v-if="error" class="error-msg">']
+  - ['</div>']
+81: </div>
+  - ['</div>']
+82: </aside>
+  - ['</aside>']
+83: 
+84: <main class="content">
+  + ['<main class="content">']
+85: <div class="kpi-board" v-if="results">
+  + ['<div class="kpi-board" v-if="results">']
+86: <div class="kpi-card">
+  + ['<div class="kpi-card">']
+87: <div class="kpi-title">{{ isPlaying ? "Sisa Massa (Live)" : "Sisa Massa Akhir" }} <span v-if="isPlaying" class="live-dot"></span></div>
+  + ['<div class="kpi-title">', '<span v-if="isPlaying" class="live-dot">']
+  - ['</span>', '</div>']
+88: <div class="kpi-value">{{ lastMass.toFixed(2) }} <span class="unit">kg</span></div>
+  + ['<div class="kpi-value">', '<span class="unit">']
+  - ['</span>', '</div>']
+89: <div class="kpi-sub" :class="{ 'warning': lossPercent > 50 }">
+  + ['<div class="kpi-sub" :class="{ \'warning\': lossPercent >']
+90: Hilang: {{ lossPercent.toFixed(1) }}%
+91: </div>
+  - ['</div>']
+92: </div>
+  - ['</div>']
+93: <div class="kpi-card">
+  + ['<div class="kpi-card">']
+94: <div class="kpi-title">{{ isPlaying ? "Ketinggian (Live)" : "Ketinggian Akhir" }}</div>
+  + ['<div class="kpi-title">']
+  - ['</div>']
+95: <div class="kpi-value">{{ (lastAlt / 1000).toFixed(2) }} <span class="unit">km</span></div>
+  + ['<div class="kpi-value">', '<span class="unit">']
+  - ['</span>', '</div>']
+96: </div>
+  - ['</div>']
+97: <div class="kpi-card">
+  + ['<div class="kpi-card">']
+98: <div class="kpi-title">{{ isPlaying ? "Kecepatan (Live)" : "Kecepatan Akhir" }}</div>
+  + ['<div class="kpi-title">']
+  - ['</div>']
+99: <div class="kpi-value">{{ lastVel.toFixed(0) }} <span class="unit">m/s</span></div>
+  + ['<div class="kpi-value">', '<span class="unit">']
+  - ['</span>', '</div>']
+100: </div>
+  - ['</div>']
+101: <div class="kpi-card">
+  + ['<div class="kpi-card">']
+102: <div class="kpi-title">{{ isPlaying ? "Waktu Elapsed" : "Total Waktu" }}</div>
+  + ['<div class="kpi-title">']
+  - ['</div>']
+103: <div class="kpi-value">{{ lastTime.toFixed(1) }} <span class="unit">s</span></div>
+  + ['<div class="kpi-value">', '<span class="unit">']
+  - ['</span>', '</div>']
+104: </div>
+  - ['</div>']
+105: 
+106: <div class="kpi-card">
+  + ['<div class="kpi-card">']
+107: <div class="kpi-title">Peak G-Force</div>
+  + ['<div class="kpi-title">']
+  - ['</div>']
+108: <div class="kpi-value">{{ peakG }} <span class="unit">G</span></div>
+  + ['<div class="kpi-value">', '<span class="unit">']
+  - ['</span>', '</div>']
+109: </div>
+  - ['</div>']
+110: <div class="kpi-card">
+  + ['<div class="kpi-card">']
+111: <div class="kpi-title">Peak Heat Flux</div>
+  + ['<div class="kpi-title">']
+  - ['</div>']
+112: <div class="kpi-value">{{ peakQ }} <span class="unit">W/m²</span></div>
+  + ['<div class="kpi-value">', '<span class="unit">']
+  - ['</span>', '</div>']
+113: </div>
+  - ['</div>']
+114: <div class="kpi-card">
+  + ['<div class="kpi-card">']
+115: <div class="kpi-title">Lokasi Jatuh</div>
+  + ['<div class="kpi-title">']
+  - ['</div>']
+116: <div class="kpi-value" style="font-size: 1rem">{{ finalLat }}°, {{ finalLon }}°</div>
+  + ['<div class="kpi-value" style="font-size: 1rem">']
+  - ['</div>']
+117: </div>
+  - ['</div>']
+118: 
+119: <div class="kpi-card" :class="{'danger-bg': isStructuralFailure}">
+  + ['<div class="kpi-card" :class="{\'danger-bg\': isStructuralFailure}">']
+120: <div class="kpi-title">Structural Status</div>
+  + ['<div class="kpi-title">']
+  - ['</div>']
+121: <div class="kpi-value" style="font-size: 1.2rem; color: #ef4444" v-if="isStructuralFailure">⚠️ MELTED / FAILED</div>
+  + ['<div class="kpi-value" style="font-size: 1.2rem; color: #ef4444" v-if="isStructuralFailure">']
+  - ['</div>']
+122: <div class="kpi-value" style="font-size: 1.2rem; color: #10b981" v-else>✅ INTACT</div>
+  + ['<div class="kpi-value" style="font-size: 1.2rem; color: #10b981" v-else>']
+  - ['</div>']
+123: </div>
+  - ['</div>']
+124: <div class="kpi-card" :class="{'blackout-bg': isBlackout}">
+  + ['<div class="kpi-card" :class="{\'blackout-bg\': isBlackout}">']
+125: <div class="kpi-title">Comms Radio (Plasma)</div>
+  + ['<div class="kpi-title">']
+  - ['</div>']
+126: <div class="kpi-value" style="font-size: 1.2rem; color: #f59e0b" v-if="isBlackout">🔥 BLACKOUT</div>
+  + ['<div class="kpi-value" style="font-size: 1.2rem; color: #f59e0b" v-if="isBlackout">']
+  - ['</div>']
+127: <div class="kpi-value" style="font-size: 1.2rem; color: #38bdf8" v-else>📡 NOMINAL</div>
+  + ['<div class="kpi-value" style="font-size: 1.2rem; color: #38bdf8" v-else>']
+  - ['</div>']
+128: </div>
+  - ['</div>']
+129: <div class="kpi-card">
+  + ['<div class="kpi-card">']
+130: <div class="kpi-title">Impact Velocity</div>
+  + ['<div class="kpi-title">']
+  - ['</div>']
+131: <div class="kpi-value">{{ impactVelocity.toFixed(0) }} <span class="unit">m/s</span></div>
+  + ['<div class="kpi-value">', '<span class="unit">']
+  - ['</span>', '</div>']
+132: </div>
+  - ['</div>']
+133: <div class="kpi-card">
+  + ['<div class="kpi-card">']
+134: <div class="kpi-title">Impact Energy</div>
+  + ['<div class="kpi-title">']
+  - ['</div>']
+135: <div class="kpi-value">{{ impactEnergyTNT.toFixed(4) }} <span class="unit">Ton TNT</span></div>
+  + ['<div class="kpi-value">', '<span class="unit">']
+  - ['</span>', '</div>']
+136: <div class="kpi-sub">{{ impactEnergyJ.toExponential(2) }} J</div>
+  + ['<div class="kpi-sub">']
+  - ['</div>']
+137: </div>
+  - ['</div>']
+138: 
+139: </div>
+  - ['</div>']
+140: </div>
+  - ['</div>']
+141: 
+142: <div class="charts-board" v-if="results">
+  + ['<div class="charts-board" v-if="results">']
+143: <div class="chart-card">
+  + ['<div class="chart-card">']
+144: <h3>Lintasan Trajektori & Profil Kecepatan</h3>
+  + ['<h3>']
+145: <div class="chart-wrapper">
+  + ['<div class="chart-wrapper">']
+146: <Line :data="trajectoryChartData" :options="trajectoryOptions" />
+147: </div>
+  - ['</div>']
+148: </div>
+  - ['</div>']
+149: <div class="chart-card">
+  + ['<div class="chart-card">']
+150: <h3>Laju Pengikisan Massa (Ablation)</h3>
+  + ['<h3>']
+151: <div class="chart-wrapper">
+  + ['<div class="chart-wrapper">']
+152: <Line :data="massChartData" :options="massOptions" />
+153: </div>
+  - ['</div>']
+154: </div>
+  - ['</div>']
+155: 
+156: <div class="chart-card">
+  + ['<div class="chart-card">']
+157: <h3>Beban Mekanik (G-Force)</h3>
+  + ['<h3>']
+158: <div class="chart-wrapper">
+  + ['<div class="chart-wrapper">']
+159: <Line :data="gForceChartData" :options="trajectoryOptions" />
+160: </div>
+  - ['</div>']
+161: </div>
+  - ['</div>']
+162: <div class="chart-card">
+  + ['<div class="chart-card">']
+163: <h3>Laju Pemanasan (Heating Rate)</h3>
+  + ['<h3>']
+164: <div class="chart-wrapper">
+  + ['<div class="chart-wrapper">']
+165: <Line :data="heatChartData" :options="trajectoryOptions" />
+166: </div>
+  - ['</div>']
+167: </div>
+  - ['</div>']
+168: </div>
+  - ['</div>']
+169: 
+170: <div class="empty-state" v-else>
+  + ['<div class="empty-state" v-else>']
+171: <div class="empty-icon">🛰️</div>
+  + ['<div class="empty-icon">']
+  - ['</div>']
+172: <h2>Siap Memulai Simulasi</h2>
+  + ['<h2>']
+173: <p>Sesuaikan parameter di sebelah kiri dan klik "Mulai Simulasi" untuk melihat visualisasi kurva penerbangan dan profil termodinamika pengikisan puing angkasa secara realistis.</p>
+  + ['<p>']
+  - ['</p>']
+174: </div>
+  - ['</div>']
+175: 
+176: <div class="csv-container" v-if="results">
+  + ['<div class="csv-container" v-if="results">']
+177: <h3>Live Telemetry Log (CSV)</h3>
+  + ['<h3>']
+178: <textarea readonly :value="csvContent" ref="csvBox"></textarea>
+  + ['<textarea readonly :value="csvContent" ref="csvBox">']
+  - ['</textarea>']
+179: <button @click="downloadCsv" class="btn-primary" style="margin-top: 1rem">Download CSV</button>
+  + ['<button @click="downloadCsv" class="btn-primary" style="margin-top: 1rem">']
+  - ['</button>']
+180: </div>
+  - ['</div>']
+181: 
+182: </main>
+  - ['</main>']
+183: </div>
+  - ['</div>']
+184: </div>
+  - ['</div>']
+185: 
