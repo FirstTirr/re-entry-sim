@@ -1,6 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import importlib
 import math
+from pathlib import Path
+import sys
 
 app = Flask(__name__)
 CORS(app)
@@ -15,6 +18,40 @@ PI = math.pi
 OMEGA_EARTH = 7.2921159e-5
 MIN_ALTITUDE = 0.0
 MIN_MASS = 1.0e-3
+
+_FORTRAN_MODULE = None
+_FORTRAN_INIT_DONE = False
+_FORTRAN_STATUS = {
+    "engine": "python-fallback",
+    "detail": "fortran-not-initialized",
+}
+
+
+def get_fortran_module():
+    global _FORTRAN_MODULE, _FORTRAN_INIT_DONE, _FORTRAN_STATUS
+
+    if _FORTRAN_INIT_DONE:
+        return _FORTRAN_MODULE
+
+    module_dir = str(Path(__file__).resolve().parent)
+    if module_dir not in sys.path:
+        sys.path.insert(0, module_dir)
+
+    try:
+        _FORTRAN_MODULE = importlib.import_module("ablation")
+        _FORTRAN_STATUS = {
+            "engine": "fortran-f2py",
+            "detail": "imported-prebuilt-ablation",
+        }
+    except Exception as exc:
+        _FORTRAN_MODULE = None
+        _FORTRAN_STATUS = {
+            "engine": "python-fallback",
+            "detail": f"prebuilt-import-failed: {exc}",
+        }
+
+    _FORTRAN_INIT_DONE = True
+    return _FORTRAN_MODULE
 
 
 def atmospheric_properties(h: float):
@@ -173,6 +210,41 @@ def simulate_python(params):
     }
 
 
+def simulate_fortran(params, fortran_module):
+    res = fortran_module.trajectory.simulate(
+        params["velocity"],
+        params["gamma"],
+        params["altitude"],
+        params["mass"],
+        params["area"],
+        params["drag_coeff"],
+        params["heat_of_ablation"],
+        params["dt"],
+        params["t_max"],
+        params["shape_factor"],
+        params["initial_lat"],
+        params["initial_lon"],
+        params["lift_to_drag"],
+        params["bank_angle_deg"],
+        params["initial_heading_deg"],
+    )
+
+    n_steps, time_out, h_out, v_out, m_out, q_out, g_out, lat_out, lon_out, mach_out = res
+    n = int(n_steps)
+    return {
+        "time": time_out[:n].tolist(),
+        "altitude": h_out[:n].tolist(),
+        "velocity": v_out[:n].tolist(),
+        "mass": m_out[:n].tolist(),
+        "heating_rate": q_out[:n].tolist(),
+        "g_force": g_out[:n].tolist(),
+        "latitude": lat_out[:n].tolist(),
+        "longitude": lon_out[:n].tolist(),
+        "mach": mach_out[:n].tolist(),
+        "engine": "fortran-f2py",
+    }
+
+
 @app.route("/api/simulate", methods=["POST", "OPTIONS"])
 def simulate():
     if request.method == "OPTIONS":
@@ -218,5 +290,20 @@ def simulate():
     if entry_mode in ("auto", "reentry"):
         auto_condition(params)
 
+    fortran_module = get_fortran_module()
+
+    if fortran_module is not None:
+        try:
+            result = simulate_fortran(params, fortran_module)
+            result["engine_detail"] = _FORTRAN_STATUS.get("detail", "fortran-active")
+            return jsonify(result)
+        except Exception as exc:
+            fallback = simulate_python(params)
+            fallback["engine_detail"] = f"fortran-runtime-failed: {exc}"
+            fallback["fortran_status"] = _FORTRAN_STATUS
+            return jsonify(fallback)
+
     result = simulate_python(params)
+    result["engine_detail"] = _FORTRAN_STATUS.get("detail", "fortran-unavailable")
+    result["fortran_status"] = _FORTRAN_STATUS
     return jsonify(result)

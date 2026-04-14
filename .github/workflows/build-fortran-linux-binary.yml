@@ -1,0 +1,55 @@
+name: Build Fortran Linux Binary
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/fortran_src/**/*.f90"
+      - ".github/workflows/**"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gfortran
+          python -m pip install --upgrade pip
+          python -m pip install numpy meson ninja
+
+      - name: Build Fortran extension
+        run: |
+          rm -f frontend/api/ablation*.so
+          python -m numpy.f2py -c -m ablation \
+            backend/fortran_src/constants.f90 \
+            backend/fortran_src/atmosphere.f90 \
+            backend/fortran_src/aerodynamics.f90 \
+            backend/fortran_src/thermodynamics.f90 \
+            backend/fortran_src/trajectory.f90
+
+          mkdir -p frontend/api
+          cp -v ablation*.so frontend/api/
+
+      - name: Verify extension exists
+        run: |
+          ls -lah frontend/api/ablation*.so
+
+      - name: Commit and push binary
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add frontend/api/ablation*.so
+          git commit -m "Auto-build Linux Fortran extension for Vercel" || echo "No changes to commit"
+          git push
