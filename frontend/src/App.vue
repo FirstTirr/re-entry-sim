@@ -278,6 +278,13 @@ const simulationInterval = ref(null)
 const currentFrame = ref(0)
 const liveTelemetryEnabled = ref(true)
 
+const simulateUrl = (() => {
+  const envUrl = import.meta.env.VITE_SIMULATE_URL
+  if (envUrl && typeof envUrl === 'string' && envUrl.trim()) return envUrl.trim()
+  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') return 'http://localhost:8000/simulate'
+  return '/api/simulate'
+})()
+
 onMounted(() => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -495,7 +502,7 @@ const runSimulation = async () => {
   loading.value = true
   error.value = null
   try {
-    const res = await fetch('http://localhost:8000/simulate', {
+    const res = await fetch(simulateUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(params.value)
